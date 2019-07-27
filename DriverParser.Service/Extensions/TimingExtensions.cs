@@ -16,13 +16,13 @@
             foreach (var last in model.LastSplits)
             {
                 var split = new Data.Entities.Splits { Value = last };
-                timing.LastSplits.Add(split);
+                //timing.las
             }
 
             foreach (var best in model.BestSplits)
             {
                 var split = new Data.Entities.Splits { Value = best };
-                timing.BestSplits.Add(split);
+                //timing.BestSplits.Add(split);
             }
 
             return timing;

@@ -6,16 +6,14 @@ namespace DriverParser.Data.Entities
     {
         public Splits()
         {
-            Result = new HashSet<Result>();
-            TimingBestSplits = new HashSet<Timing>();
-            TimingLastSplits = new HashSet<Timing>();
+            ResultsSplits = new HashSet<ResultsSplits>();
+            SplitsTimings = new HashSet<SplitsTimings>();
         }
 
         public long Value { get; set; }
 
-        public virtual ICollection<Result> Result { get; set; }
-        public virtual ICollection<Timing> TimingBestSplits { get; set; }
-        public virtual ICollection<Timing> TimingLastSplits { get; set; }
+        public virtual ICollection<ResultsSplits> ResultsSplits { get; set; }
+        public virtual ICollection<SplitsTimings> SplitsTimings { get; set; }
 
         public override string ToString()
         {

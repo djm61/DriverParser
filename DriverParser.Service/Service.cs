@@ -45,18 +45,29 @@ namespace DriverParser.Service
             var filePath = Path.Combine(Directory.GetCurrentDirectory(), _filePath);
 
             Result result = null;
-
+            _logger.LogDebug($"ParseFile: Opening file [{filePath}]");
             using (var sr = File.OpenText(filePath))
             {
                 var serializer = new JsonSerializer();
+                _logger.LogDebug("ParseFile: attempting to deserialize file");
                 result = (Result)serializer.Deserialize(sr, typeof(Result));
             }
 
-            var entityResult = result.ConvertToEntity();
-            _context.Add(entityResult);
-            _context.SaveChanges();
+            if (result != null)
+            {
+                _logger.LogDebug("ParseFile: successfully deserialized file, attempting to convert to an entity so it can be saved");
+                var entityResult = result.ConvertToEntity();
+                _context.Add(entityResult);
+                var saveResult = _context.SaveChanges();
+                _logger.LogDebug($"ParseFile: save result [{saveResult}]");
 
-            StatusMessage = "Successfully parsed file.";
+                StatusMessage = "Successfully parsed file.";
+            }
+            else
+            {
+                _logger.LogWarning("ParseFile: unable to deserialize file");
+                StatusMessage = "Unable to parse file";
+            }
         }
     }
 }

@@ -7,6 +7,7 @@ namespace DriverParser.Data.Entities
         public Result()
         {
             ResultsLeaderBoardLines = new HashSet<ResultsLeaderBoardLines>();
+            ResultsSplits = new HashSet<ResultsSplits>();
         }
 
         public long BestLap { get; set; }
@@ -16,6 +17,7 @@ namespace DriverParser.Data.Entities
 
         public virtual Splits BestSplits { get; set; }
         public virtual ICollection<ResultsLeaderBoardLines> ResultsLeaderBoardLines { get; set; }
+        public virtual ICollection<ResultsSplits> ResultsSplits { get; set; }
 
         public override string ToString()
         {

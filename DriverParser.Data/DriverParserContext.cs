@@ -1,8 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using DriverParser.Data.Entities;
+﻿using DriverParser.Data.Entities;
 using DriverParser.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -39,7 +35,10 @@ namespace DriverParser.Data
         public virtual DbSet<LeaderBoardLine> LeaderBoardLine { get; set; }
         public virtual DbSet<Result> Result { get; set; }
         public virtual DbSet<ResultsLeaderBoardLines> ResultsLeaderBoardLines { get; set; }
+        public virtual DbSet<ResultsSplits> ResultsSplits { get; set; }
+        public virtual DbSet<SchemaVersions> SchemaVersions { get; set; }
         public virtual DbSet<Splits> Splits { get; set; }
+        public virtual DbSet<SplitsTimings> SplitsTimings { get; set; }
         public virtual DbSet<Timing> Timing { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -57,6 +56,8 @@ namespace DriverParser.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            _logger.LogDebug("OnModelCreating: EF model being created");
+
             modelBuilder.HasAnnotation("ProductVersion", "2.2.6-servicing-10079");
 
             modelBuilder.Entity<Car>(entity =>
@@ -155,18 +156,11 @@ namespace DriverParser.Data
 
                 entity.Property(e => e.BestLap).HasColumnType("BIGINT");
 
-                entity.Property(e => e.BestSplitsId).HasColumnType("BIGINT");
-
                 entity.Property(e => e.IsWetSession)
                     .IsRequired()
-                    .HasColumnType("BIT");
+                    .HasColumnType("BOOLEAN");
 
                 entity.Property(e => e.Type).HasColumnType("BIGINT");
-
-                entity.HasOne(d => d.BestSplits)
-                    .WithMany(p => p.Result)
-                    .HasForeignKey(d => d.BestSplitsId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
             });
 
             modelBuilder.Entity<ResultsLeaderBoardLines>(entity =>
@@ -188,6 +182,38 @@ namespace DriverParser.Data
                     .OnDelete(DeleteBehavior.ClientSetNull);
             });
 
+            modelBuilder.Entity<ResultsSplits>(entity =>
+            {
+                entity.HasKey(e => new { e.ResultId, e.SplitsId });
+
+                entity.Property(e => e.ResultId).HasColumnType("BIGINT");
+
+                entity.Property(e => e.SplitsId).HasColumnType("BIGINT");
+
+                entity.HasOne(d => d.Result)
+                    .WithMany(p => p.ResultsSplits)
+                    .HasForeignKey(d => d.ResultId)
+                    .OnDelete(DeleteBehavior.ClientSetNull);
+
+                entity.HasOne(d => d.Splits)
+                    .WithMany(p => p.ResultsSplits)
+                    .HasForeignKey(d => d.SplitsId)
+                    .OnDelete(DeleteBehavior.ClientSetNull);
+            });
+
+            modelBuilder.Entity<SchemaVersions>(entity =>
+            {
+                entity.Property(e => e.Id)
+                    .HasColumnType("BIGINT")
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.Added)
+                    .IsRequired()
+                    .HasColumnType("DATETIME");
+
+                entity.Property(e => e.ScriptName).IsRequired();
+            });
+
             modelBuilder.Entity<Splits>(entity =>
             {
                 entity.Property(e => e.Id)
@@ -195,6 +221,25 @@ namespace DriverParser.Data
                     .ValueGeneratedNever();
 
                 entity.Property(e => e.Value).HasColumnType("BIGINT");
+            });
+
+            modelBuilder.Entity<SplitsTimings>(entity =>
+            {
+                entity.HasKey(e => new { e.SplitsId, e.TimingId });
+
+                entity.Property(e => e.SplitsId).HasColumnType("BIGINT");
+
+                entity.Property(e => e.TimingId).HasColumnType("BIGINT");
+
+                entity.HasOne(d => d.Splits)
+                    .WithMany(p => p.SplitsTimings)
+                    .HasForeignKey(d => d.SplitsId)
+                    .OnDelete(DeleteBehavior.ClientSetNull);
+
+                entity.HasOne(d => d.Timing)
+                    .WithMany(p => p.SplitsTimings)
+                    .HasForeignKey(d => d.TimingId)
+                    .OnDelete(DeleteBehavior.ClientSetNull);
             });
 
             modelBuilder.Entity<Timing>(entity =>
@@ -205,28 +250,16 @@ namespace DriverParser.Data
 
                 entity.Property(e => e.BestLap).HasColumnType("BIGINT");
 
-                entity.Property(e => e.BestSplitsId).HasColumnType("BIGINT");
-
                 entity.Property(e => e.LapCount).HasColumnType("BIGINT");
 
                 entity.Property(e => e.LastLap).HasColumnType("BIGINT");
 
                 entity.Property(e => e.LastSplitId).HasColumnType("BIGINT");
 
-                entity.Property(e => e.LastSplitsId).HasColumnType("BIGINT");
-
                 entity.Property(e => e.TotalTime).HasColumnType("BIGINT");
-
-                entity.HasOne(d => d.BestSplits)
-                    .WithMany(p => p.TimingBestSplits)
-                    .HasForeignKey(d => d.BestSplitsId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
-
-                entity.HasOne(d => d.LastSplits)
-                    .WithMany(p => p.TimingLastSplits)
-                    .HasForeignKey(d => d.LastSplitsId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
             });
+
+            _logger.LogDebug("OnModelCreating: EF model created");
         }
 
         /// <inheritdoc />
