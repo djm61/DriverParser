@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Files\Script001 - Create SchemaVersions.sql" />
+    <None Remove="Files\Script002 - Create Driver.sql" />
+    <None Remove="Files\Script003 - Create Car.sql" />
+    <None Remove="Files\Script004 - Create CarDriver.sql" />
+    <None Remove="Files\Script005 - Create Splits.sql" />
+    <None Remove="Files\Script006 - Create Timing.sql" />
+    <None Remove="Files\Script007 - Create LeaderBoardLine.sql" />
+    <None Remove="Files\Script008 - Create Result.sql" />
+    <None Remove="Files\Script009 - Create ResultsLeaderBoardLines.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Files\Script001 - Create SchemaVersions.sql" />
+    <EmbeddedResource Include="Files\Script002 - Create Driver.sql" />
+    <EmbeddedResource Include="Files\Script003 - Create Car.sql" />
+    <EmbeddedResource Include="Files\Script004 - Create CarDriver.sql" />
+    <EmbeddedResource Include="Files\Script005 - Create Splits.sql" />
+    <EmbeddedResource Include="Files\Script006 - Create Timing.sql" />
+    <EmbeddedResource Include="Files\Script007 - Create LeaderBoardLine.sql" />
+    <EmbeddedResource Include="Files\Script008 - Create Result.sql" />
+    <EmbeddedResource Include="Files\Script009 - Create ResultsLeaderBoardLines.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.6">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DriverParser.Extensions\DriverParser.Extensions.csproj" />
+  </ItemGroup>
+
+</Project>

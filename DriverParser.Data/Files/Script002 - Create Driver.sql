@@ -1,0 +1,7 @@
+﻿CREATE TABLE Driver (
+	Id BIGINT PRIMARY KEY,
+	FirstName TEXT NOT NULL,
+	LastName TEXT NOT NULL,
+	ShortName TEXT NOT NULL,
+	PlayerId TEXT NOT NULL
+);

@@ -1,0 +1,10 @@
+﻿CREATE TABLE Car (
+	Id BIGINT PRIMARY KEY,
+	CarId BIGINT NOT NULL,
+	RaceNumber BIGINT NOT NULL,
+	CarModel BIGINT NOT NULL,
+	CupCategory BIGINT NOT NULL,
+	TeamName TEXT NOT NULL,
+	CurrentDriverId BIGINT NOT NULL,
+	FOREIGN KEY (CurrentDriverId) REFERENCES Driver(Id)
+);

@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DriverParser.Data\DriverParser.Data.csproj" />
+    <ProjectReference Include="..\DriverParser.Extensions\DriverParser.Extensions.csproj" />
+    <ProjectReference Include="..\DriverParser.Model\DriverParser.Model.csproj" />
+  </ItemGroup>
+
+</Project>

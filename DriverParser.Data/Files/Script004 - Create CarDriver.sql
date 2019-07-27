@@ -1,0 +1,7 @@
+﻿CREATE TABLE CarDriver (
+	CarId BIGINT NOT NULL,
+	DriverId BIGINT NOT NULL,
+	PRIMARY KEY (CarId, DriverId),
+	FOREIGN KEY (CarId) REFERENCES Car(Id),
+	FOREIGN KEY (DriverId) REFERENCES Driver(Id)
+);
