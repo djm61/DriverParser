@@ -6,19 +6,20 @@ namespace DriverParser.Data.Entities
     {
         public Result()
         {
-            BestSplits = new HashSet<Splits>();
-            LeaderBoardLines = new HashSet<LeaderBoardLine>();
+            ResultsLeaderBoardLines = new HashSet<ResultsLeaderBoardLines>();
         }
 
         public long BestLap { get; set; }
-        public ICollection<Splits> BestSplits { get; set; }
-        public bool IsWetSession { get; set; }
+        public long BestSplitsId { get; set; }
+        public string IsWetSession { get; set; }
         public long Type { get; set; }
-        public ICollection<LeaderBoardLine> LeaderBoardLines { get; set; }
+
+        public virtual Splits BestSplits { get; set; }
+        public virtual ICollection<ResultsLeaderBoardLines> ResultsLeaderBoardLines { get; set; }
 
         public override string ToString()
         {
-            return $"BestLap[{BestLap}], Wet[{IsWetSession}], Type[{Type}], LeaderBoardCount[{LeaderBoardLines.Count}], {base.ToString()}";
+            return $"BestLap[{BestLap}], Wet[{IsWetSession}], Type[{Type}], ResultsLeaderBoardCount[{ResultsLeaderBoardLines.Count}], {base.ToString()}";
         }
     }
 }

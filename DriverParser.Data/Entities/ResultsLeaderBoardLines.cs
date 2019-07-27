@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace DriverParser.Data.Models
+﻿namespace DriverParser.Data.Entities
 {
     public partial class ResultsLeaderBoardLines
     {
