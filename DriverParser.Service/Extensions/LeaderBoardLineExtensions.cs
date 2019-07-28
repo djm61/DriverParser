@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Remotion.Linq.Clauses.ResultOperators;
-
-namespace DriverParser.Service.Extensions
+﻿namespace DriverParser.Service.Extensions
 {
     public static class LeaderBoardLineExtensions
     {
@@ -19,16 +15,11 @@ namespace DriverParser.Service.Extensions
                 CurrentDriverId = currentDriver.Id,
                 CurrentDriver = currentDriver,
                 CurrentDriverIndex = model.CurrentDriverIndex,
-                Timing = model.Timing.ConvertToEntity()
+                TimingId = timing.Id,
+                Timing = timing
             };
 
             return line;
-        }
-
-        public static IList<Data.Entities.LeaderBoardLine> ConvertToEntity(this IEnumerable<Model.LeaderBoardLine> models)
-        {
-            var lines = models.Select(l => l.ConvertToEntity()).ToList();
-            return lines;
         }
     }
 }

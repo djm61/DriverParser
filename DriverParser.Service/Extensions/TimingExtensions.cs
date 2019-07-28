@@ -16,13 +16,27 @@
             foreach (var last in model.LastSplits)
             {
                 var split = new Data.Entities.Splits { Value = last };
-                //timing.las
+                var splitsTimings = new Data.Entities.SplitsTimings
+                {
+                    TimingId = timing.Id
+                    , SplitsId = split.Id
+                    , Splits = split
+                };
+
+                timing.SplitsTimings.Add(splitsTimings);
             }
 
             foreach (var best in model.BestSplits)
             {
                 var split = new Data.Entities.Splits { Value = best };
-                //timing.BestSplits.Add(split);
+                var splitsTimings = new Data.Entities.SplitsTimings
+                {
+                    TimingId = timing.Id,
+                    SplitsId = split.Id,
+                    Splits = split
+                };
+
+                //todo what now?  which property?
             }
 
             return timing;

@@ -1,11 +1,9 @@
 ﻿using System.IO;
 using System.Reflection;
-using DriverParser.Data;
 using DriverParser.Logging;
 using DriverParser.Service;
 using log4net;
 using log4net.Config;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -46,20 +44,20 @@ namespace DriverParser.Console
 
             var configuration = builder.Build();
 
-            var connString = configuration.GetConnectionString("Default");
-            serviceCollection
-                .AddEntityFrameworkSqlite()
-                .AddDbContext<DriverParserContext>(options =>
-                options.UseSqlite(connString)
-                    .EnableDetailedErrors()
-                    .EnableSensitiveDataLogging()
-                );
+            //var connString = configuration.GetConnectionString("Default");
+            //serviceCollection
+            //    .AddEntityFrameworkSqlite()
+            //    .AddDbContext<DriverParserContext>(options =>
+            //    options.UseSqlite(connString)
+            //        .EnableDetailedErrors()
+            //        .EnableSensitiveDataLogging()
+            //    );
 
             serviceCollection.Configure<DriverParserSettings>(configuration.GetSection("DriverParserSettings"));
             
             serviceCollection.AddLogging();
 
-            serviceCollection.AddTransient<DbService>();
+            //serviceCollection.AddTransient<DbService>();
             serviceCollection.AddTransient<IService, Service.Service>();
 
             serviceCollection.AddTransient<App>();

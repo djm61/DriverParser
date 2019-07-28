@@ -2,6 +2,7 @@
 {
     public class DriverParserSettings
     {
-        public string FilePath { get; set; }
+        public string InputPath { get; set; }
+        public string OutputPath { get; set; }
     }
 }

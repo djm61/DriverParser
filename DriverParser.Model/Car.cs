@@ -10,9 +10,9 @@ namespace DriverParser.Model
         }
 
         public long Id { get; set; }
-        public long CarId { get; set; }
-        public long RaceNumber { get; set; }
-        public long CarModel { get; set; }
+        public int CarId { get; set; }
+        public int RaceNumber { get; set; }
+        public int CarModel { get; set; }
         public long CupCategory { get; set; }
         public string TeamName { get; set; }
         public List<Driver> Drivers { get; set; }
