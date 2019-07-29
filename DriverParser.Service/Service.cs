@@ -138,7 +138,8 @@ namespace DriverParser.Service
         {
             _logger.LogDebug("Computing results");
 
-            var racers = _result.LeaderBoardLines.OrderBy(t => t.Timing.BestLap).ToList();
+            //var racers = _result.LeaderBoardLines.OrderBy(t => t.Timing.BestLap).ToList();
+            var racers = _result.LeaderBoardLines;
 
             var racersLength = racers.Count;
             for (var i = 0; i < racersLength; i++)
