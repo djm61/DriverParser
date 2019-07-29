@@ -31,7 +31,7 @@ namespace DriverParser.Console
 
                 _service.ComputeResults();
 
-                System.Console.WriteLine($"Done Computing Results!  Status Message[{_service.StatusMessage}");
+                System.Console.WriteLine($"Done Computing Results!  Status Message[{_service.StatusMessage}]");
 
                 _service.OutputResults();
             }
