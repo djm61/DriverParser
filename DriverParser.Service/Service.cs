@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using DriverParser.Extensions;
 using DriverParser.Model;
 using Microsoft.Extensions.Logging;
@@ -102,32 +103,50 @@ namespace DriverParser.Service
         public void ParseFile()
         {
             _logger.LogDebug($"ParseFile: Parsing file [{_inputPath}]");
-            if (string.IsNullOrWhiteSpace(_inputPath))
+            try
             {
-                _logger.LogError("ParseFile: File name is blank or empty.  Cannot continue.");
-                StatusMessage = "Filename is blank or empty.  Cannot continue.";
-                return;
-            }
+                if (string.IsNullOrWhiteSpace(_inputPath))
+                {
+                    _logger.LogError("ParseFile: File name is blank or empty.  Cannot continue.");
+                    StatusMessage = "Filename is blank or empty.  Cannot continue.";
+                    return;
+                }
 
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(), _inputPath);
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), _inputPath);
 
-            _logger.LogDebug($"ParseFile: Opening file [{filePath}]");
-            using (var sr = File.OpenText(filePath))
-            {
-                var serializer = new JsonSerializer();
-                _logger.LogDebug("ParseFile: attempting to deserialize file");
-                _result = (Result)serializer.Deserialize(sr, typeof(Result));
-            }
+                _logger.LogDebug($"ParseFile: Opening file [{filePath}], assuming ASCII encoding");
+                var sb = new StringBuilder();
+                using (var sr1 = new StreamReader(filePath, Encoding.ASCII, true))
+                {
+                    _logger.LogDebug($"ParseFile: Stream created, reading lines");
+                    string line;
+                    while ((line = sr1.ReadLine()) != null)
+                    {
+                        sb.AppendLine(line);
+                    }
 
-            if (_result != null)
-            {
-                _logger.LogDebug("ParseFile: successfully deserialized file, attempting to convert to an entity so it can be saved");
-                StatusMessage = "Successfully parsed file.";
+                    var file = sb.ToString();
+
+                    _logger.LogDebug($"ParseFile: got all lines, deserializing file, [{sb.Length}] lines");
+                    _result = JsonConvert.DeserializeObject<Result>(file);
+                }
+
+                if (_result != null)
+                {
+                    _logger.LogDebug(
+                        "ParseFile: successfully deserialized file, attempting to convert to an entity so it can be saved");
+                    StatusMessage = "Successfully parsed file.";
+                }
+                else
+                {
+                    _logger.LogWarning("ParseFile: unable to deserialize file");
+                    StatusMessage = "Unable to parse file";
+                }
             }
-            else
+            catch (Exception ex)
             {
-                _logger.LogWarning("ParseFile: unable to deserialize file");
-                StatusMessage = "Unable to parse file";
+                _logger.LogError($"ParseFile: Error parsing file [{ex}]", ex);
+                StatusMessage = $"Error parsing file [{ex.Message}]";
             }
         }
 
