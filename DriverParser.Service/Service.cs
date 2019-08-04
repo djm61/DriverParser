@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Json;
+using System.Security.Cryptography;
 using System.Text;
 using DriverParser.Extensions;
 using DriverParser.Model;
@@ -68,31 +70,35 @@ namespace DriverParser.Service
         public string StatusMessage { get; set; }
 
         /// <summary>
+        /// Constructor - Initializes te <see cref="IService"/> object
+        /// </summary>
+        /// <param name="loggerFactory"><see cref="ILoggerFactory"/> logger factory - creates a <see cref="ILogger"/> object</param>
+        /// <param name="inputPath"><see cref="string"/> of the input file path</param>
+        /// <param name="outputPath"><see cref="string"/> of the output file path</param>
+        public Service(ILoggerFactory loggerFactory, string inputPath, string outputPath)
+        {
+            _logger = loggerFactory
+                .ThrowIfNull(nameof(loggerFactory))
+                .CreateLogger<Service>()
+                .ThrowIfNull(nameof(_logger));
+            _inputPath = inputPath.ThrowIfNullOrEmptyOrWhitespace(inputPath);
+            _outputPath = outputPath.ThrowIfNullOrEmptyOrWhitespace(outputPath);
+            _result = null;
+            _finalResults = new List<FinalResult>();
+            StatusMessage = string.Empty;
+
+            _logger.LogDebug("Service with strings created");
+        }
+
+        /// <summary>
         /// Constructor - Initialized the <see cref="IService"/> object
         /// </summary>
         /// <param name="loggerFactory">Logger factory - creates a <see cref="ILogger"/> object</param>
         /// <param name="settings">Settings from the config file</param>
         public Service(ILoggerFactory loggerFactory, IOptions<DriverParserSettings> settings)
+            : this(loggerFactory, settings.ThrowIfNull(nameof(settings)).Value.ThrowIfNull(nameof(settings.Value)).InputPath, settings.ThrowIfNull(nameof(settings)).Value.ThrowIfNull(nameof(settings.Value)).OutputPath)
         {
-            _logger = loggerFactory.ThrowIfNull(nameof(loggerFactory)).CreateLogger<Service>();
-            _inputPath = settings
-                .ThrowIfNull(nameof(settings))
-                .Value
-                .ThrowIfNull(nameof(settings.Value))
-                .InputPath
-                .ThrowIfNullOrEmptyOrWhitespace(nameof(settings.Value.InputPath));
-            _outputPath = settings
-                .ThrowIfNull(nameof(settings))
-                .Value
-                .ThrowIfNull(nameof(settings.Value))
-                .OutputPath
-                .ThrowIfNullOrEmptyOrWhitespace(nameof(settings.Value.OutputPath));
-
-            _result = null;
-            _finalResults = new List<FinalResult>();
-            StatusMessage = string.Empty;
-
-            _logger.LogDebug("Service created");
+            _logger.LogDebug("Service with options created");
         }
 
         /// <summary>
@@ -102,21 +108,34 @@ namespace DriverParser.Service
         /// </summary>
         public void ParseFile()
         {
-            _logger.LogDebug($"ParseFile: Parsing file [{_inputPath}]");
+            _logger.LogDebug("ParseFile: Parsing file");
             try
             {
-                if (string.IsNullOrWhiteSpace(_inputPath))
+                ParseFile(_inputPath);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"ParseFile: Error parsing file [{ex}]", ex);
+                StatusMessage = $"Error parsing file [{ex.Message}]";
+            }
+        }
+
+        public void ParseFile(string fileName)
+        {
+            _logger.LogDebug($"ParseFile: Parsing file [{fileName}]");
+            try
+            {
+                if (string.IsNullOrWhiteSpace(fileName))
                 {
                     _logger.LogError("ParseFile: File name is blank or empty.  Cannot continue.");
                     StatusMessage = "Filename is blank or empty.  Cannot continue.";
                     return;
                 }
 
-                var filePath = Path.Combine(Directory.GetCurrentDirectory(), _inputPath);
-
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), fileName);
                 _logger.LogDebug($"ParseFile: Opening file [{filePath}], assuming ASCII encoding");
                 var sb = new StringBuilder();
-                using (var sr1 = new StreamReader(filePath, Encoding.ASCII, true))
+                using (var sr1 = new StreamReader(filePath, Encoding.Unicode, true))
                 {
                     _logger.LogDebug($"ParseFile: Stream created, reading lines");
                     string line;
@@ -157,6 +176,13 @@ namespace DriverParser.Service
         {
             _logger.LogDebug("Computing results");
 
+            if (_result == null)
+            {
+                _logger.LogWarning("ComputeResults: results object is null, cannot computer");
+                StatusMessage = "Unable to compute results";
+                return;
+            }
+
             //var racers = _result.LeaderBoardLines.OrderBy(t => t.Timing.BestLap).ToList();
             var racers = _result.LeaderBoardLines;
 
@@ -183,11 +209,11 @@ namespace DriverParser.Service
         }
 
         /// <summary>
-        /// Outputs the results to the specified output file
+        /// Outputs the results to the specified output file in settings
         /// </summary>
-        public void OutputResults()
+        public void WriteResults()
         {
-            _logger.LogDebug($"OutputResults: outputting [{_finalResults.Count}] final results");
+            _logger.LogDebug($"WriteResults: outputting [{_finalResults.Count}] final results");
 
             if (File.Exists(_outputPath))
             {
@@ -205,8 +231,27 @@ namespace DriverParser.Service
                 }
             }
 
-            _logger.LogDebug("OutputResults: done outputting results!");
+            _logger.LogDebug("WriteResults: done outputting results!");
             StatusMessage = "Successfully written output";
+        }
+
+        /// <summary>
+        /// Returns the results as a <see cref="string"/>
+        /// </summary>
+        /// <returns><see cref="string"/> of the results</returns>
+        public string OutputResults()
+        {
+            _logger.LogDebug($"OutputResults: returning [{_finalResults.Count}] final results");
+
+            var sb = new StringBuilder();
+            foreach (var result in _finalResults)
+            {
+                var line = string.Format(OutputLine, result.Position, result.Name, result.RaceNumber,
+                    result.CarModel, result.LapCount, result.BestLap, result.TotalTime);
+                sb.AppendLine(line);
+            }
+
+            return sb.ToString();
         }
 
         /// <summary>

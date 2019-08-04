@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form asp-action="Index" asp-controller="Home" method="post" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+    @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+    <div class="form-group">
+        <div class="col-md-8">
+            <p>
+                <div class="custom-file">
+                    <input type="file" name="files" class="custom-file-input" id="customFile">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
+                </div>
+            </p>
+            <input type="submit" id="btnSubmit" class="btn btn-outline-primary align-self-end" value="Parse" />
+        </div>
+    </div>
+</form>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        // Add the following code if you want the name of the file appear on select
+        $(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            //var fileName = $(this).val();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+
+    </script>
+}
