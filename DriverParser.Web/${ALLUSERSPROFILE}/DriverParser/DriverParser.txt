@@ -1269,3 +1269,183 @@ INFO  2019-08-04 09:38:44,133 [    6] ControllerActionInvoker        Executed ac
 INFO  2019-08-04 09:38:44,154 [    6] ObjectResultExecutor           Executing ObjectResult, writing value of type 'System.String'.
 INFO  2019-08-04 09:38:44,159 [    6] ControllerActionInvoker        Executed action DriverParser.Web.Controllers.HomeController.Index (DriverParser.Web) in 5572.7918ms
 INFO  2019-08-04 09:38:44,172 [    6] WebHost                        Request finished in 5673.6882ms 200 text/plain; charset=utf-8
+INFO  2019-08-04 22:28:14,888 [    1] XmlKeyManager                  User profile is available. Using 'C:\Users\iostr\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+INFO  2019-08-04 22:28:15,578 [    6] WebHost                        Request starting HTTP/2.0 GET https://localhost:44348/  
+INFO  2019-08-04 22:28:15,815 [    6] ControllerActionInvoker        Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller DriverParser.Web.Controllers.HomeController (DriverParser.Web).
+DEBUG 2019-08-04 22:28:15,881 [    6] Service                        Service with strings created
+DEBUG 2019-08-04 22:28:15,884 [    6] Service                        Service with options created
+DEBUG 2019-08-04 22:28:15,888 [    6] HomeController                 HomeController created
+INFO  2019-08-04 22:28:15,897 [    6] ControllerActionInvoker        Executing action method DriverParser.Web.Controllers.HomeController.Index (DriverParser.Web) - Validation state: Valid
+DEBUG 2019-08-04 22:28:15,899 [    6] HomeController                 Index
+INFO  2019-08-04 22:28:15,904 [    6] ControllerActionInvoker        Executed action method DriverParser.Web.Controllers.HomeController.Index (DriverParser.Web), returned result Microsoft.AspNetCore.Mvc.ViewResult in 2.8883ms.
+INFO  2019-08-04 22:28:15,953 [    6] ViewResultExecutor             Executing ViewResult, running view Index.
+INFO  2019-08-04 22:28:16,237 [    6] ViewResultExecutor             Executed ViewResult - view Index executed in 298.6488ms.
+INFO  2019-08-04 22:28:16,240 [    6] ControllerActionInvoker        Executed action DriverParser.Web.Controllers.HomeController.Index (DriverParser.Web) in 414.5895ms
+INFO  2019-08-04 22:28:16,249 [    6] WebHost                        Request finished in 669.2932ms 200 text/html; charset=utf-8
+INFO  2019-08-04 22:28:16,353 [    9] WebHost                        Request starting HTTP/2.0 GET https://localhost:44348/lib/bootstrap/dist/css/bootstrap.css  
+INFO  2019-08-04 22:28:16,360 [    6] WebHost                        Request starting HTTP/2.0 GET https://localhost:44348/lib/bootstrap/dist/js/bootstrap.js  
+INFO  2019-08-04 22:28:16,410 [    9] StaticFileMiddleware           Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.css'. Physical path: 'C:\Users\iostr\Google Drive\Development\Repos\DriverParser\DriverParser.Web\wwwroot\lib\bootstrap\dist\css\bootstrap.css'
+INFO  2019-08-04 22:28:16,429 [    9] WebHost                        Request finished in 80.0892ms 200 text/css
+INFO  2019-08-04 22:28:16,508 [   17] StaticFileMiddleware           Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.js'. Physical path: 'C:\Users\iostr\Google Drive\Development\Repos\DriverParser\DriverParser.Web\wwwroot\lib\bootstrap\dist\js\bootstrap.js'
+INFO  2019-08-04 22:28:16,511 [   17] WebHost                        Request finished in 154.3666ms 200 application/javascript
+INFO  2019-08-04 22:28:20,871 [    9] WebHost                        Request starting HTTP/2.0 POST https://localhost:44348/ multipart/form-data; boundary=----WebKitFormBoundaryBzNpQzFGQdi0j6Fd 44949
+WARN  2019-08-04 22:28:20,877 [    9] CorsService                    The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-04 22:28:20,882 [    9] CorsService                    CORS policy execution successful.
+INFO  2019-08-04 22:28:20,921 [    9] ControllerActionInvoker        Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.Collections.Generic.List`1[Microsoft.AspNetCore.Http.IFormFile]) on controller DriverParser.Web.Controllers.HomeController (DriverParser.Web).
+DEBUG 2019-08-04 22:28:21,006 [    6] Service                        Service with strings created
+DEBUG 2019-08-04 22:28:21,007 [    6] Service                        Service with options created
+DEBUG 2019-08-04 22:28:21,009 [    6] HomeController                 HomeController created
+INFO  2019-08-04 22:28:21,055 [    6] ControllerActionInvoker        Executing action method DriverParser.Web.Controllers.HomeController.Index (DriverParser.Web) - Validation state: Valid
+DEBUG 2019-08-04 22:28:21,060 [    6] HomeController                 UploadFile: file count[1]
+DEBUG 2019-08-04 22:28:21,075 [    7] Service                        ParseFile: Parsing file [C:\Users\iostr\AppData\Local\Temp\tmp60F6.tmp]
+DEBUG 2019-08-04 22:28:21,079 [    7] Service                        ParseFile: Opening file [C:\Users\iostr\AppData\Local\Temp\tmp60F6.tmp], assuming ASCII encoding
+DEBUG 2019-08-04 22:28:21,081 [    7] Service                        ParseFile: Stream created, reading lines
+DEBUG 2019-08-04 22:28:25,415 [    7] Service                        ParseFile: got all lines, deserializing file, [22988] lines
+DEBUG 2019-08-04 22:28:25,641 [    7] Service                        ParseFile: successfully deserialized file, attempting to convert to an entity so it can be saved
+DEBUG 2019-08-04 22:28:25,643 [    7] Service                        Computing results
+DEBUG 2019-08-04 22:28:25,646 [    7] Service                        GetCarModel: getting car model for carId [8]
+DEBUG 2019-08-04 22:28:25,648 [    7] Service                        GetCarId: returning car model [Bently Continental GT3 2018]
+DEBUG 2019-08-04 22:28:25,653 [    7] Service                        ComputeResults: finalResult[Position[0], Name[Mike Stofmeel], Race[7], Car[Bently Continental GT3 2018], Lap[21], BestLap[00:01:55.3650000], Total[4294881613], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:28:25,654 [    7] Service                        GetCarModel: getting car model for carId [15]
+DEBUG 2019-08-04 22:28:25,655 [    7] Service                        GetCarId: returning car model [Lexus RC F GT3]
+DEBUG 2019-08-04 22:28:25,657 [    7] Service                        ComputeResults: finalResult[Position[1], Name[Travis Wallace], Race[14], Car[Lexus RC F GT3], Lap[21], BestLap[00:01:55.7100000], Total[4294888638], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:28:25,658 [    7] Service                        GetCarModel: getting car model for carId [1]
+DEBUG 2019-08-04 22:28:25,660 [    7] Service                        GetCarId: returning car model [Mercedes AMG GT3]
+DEBUG 2019-08-04 22:28:25,661 [    7] Service                        ComputeResults: finalResult[Position[2], Name[Brandyn Purcell], Race[33], Car[Mercedes AMG GT3], Lap[21], BestLap[00:01:56.8890000], Total[4294926146], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:28:25,663 [    7] Service                        GetCarModel: getting car model for carId [0]
+DEBUG 2019-08-04 22:28:25,664 [    7] Service                        GetCarId: returning car model [Porsche 991 GT3]
+DEBUG 2019-08-04 22:28:25,666 [    7] Service                        ComputeResults: finalResult[Position[3], Name[Luis Hinojos], Race[911], Car[Porsche 991 GT3], Lap[21], BestLap[00:01:56.5470000], Total[4294927115], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:28:25,668 [    7] Service                        GetCarModel: getting car model for carId [7]
+DEBUG 2019-08-04 22:28:25,670 [    7] Service                        GetCarId: returning car model [BMW M6 GT3]
+DEBUG 2019-08-04 22:28:25,671 [    7] Service                        ComputeResults: finalResult[Position[4], Name[Elyess Bouzouita], Race[36], Car[BMW M6 GT3], Lap[21], BestLap[00:01:56.7960000], Total[4294927958], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:28:25,673 [    7] Service                        GetCarModel: getting car model for carId [2]
+DEBUG 2019-08-04 22:28:25,675 [    7] Service                        GetCarId: returning car model [Ferrari 488 GT3]
+DEBUG 2019-08-04 22:28:25,677 [    7] Service                        ComputeResults: finalResult[Position[5], Name[Leandro Cairol], Race[11], Car[Ferrari 488 GT3], Lap[21], BestLap[00:01:55.4610000], Total[4294928643], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:28:25,679 [    7] Service                        GetCarModel: getting car model for carId [3]
+DEBUG 2019-08-04 22:28:25,681 [    7] Service                        GetCarId: returning car model [Audi R8 LMS]
+DEBUG 2019-08-04 22:28:25,682 [    7] Service                        ComputeResults: finalResult[Position[6], Name[Tom Lebeuf], Race[21], Car[Audi R8 LMS], Lap[21], BestLap[00:01:57.0270000], Total[4294938059], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:28:25,684 [    7] Service                        GetCarModel: getting car model for carId [1]
+DEBUG 2019-08-04 22:28:25,686 [    7] Service                        GetCarId: returning car model [Mercedes AMG GT3]
+DEBUG 2019-08-04 22:28:25,688 [    7] Service                        ComputeResults: finalResult[Position[7], Name[Wesley Stokes], Race[472], Car[Mercedes AMG GT3], Lap[21], BestLap[00:01:57.3660000], Total[4294940918], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:28:25,690 [    7] Service                        GetCarModel: getting car model for carId [4]
+DEBUG 2019-08-04 22:28:25,691 [    7] Service                        GetCarId: returning car model [Lamborghini Huracan GT3]
+DEBUG 2019-08-04 22:28:25,693 [    7] Service                        ComputeResults: finalResult[Position[8], Name[Johnny Major], Race[77], Car[Lamborghini Huracan GT3], Lap[21], BestLap[00:01:57.2820000], Total[4294950801], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:28:25,695 [    7] Service                        GetCarModel: getting car model for carId [2]
+DEBUG 2019-08-04 22:28:25,696 [    7] Service                        GetCarId: returning car model [Ferrari 488 GT3]
+DEBUG 2019-08-04 22:28:25,698 [    7] Service                        ComputeResults: finalResult[Position[9], Name[Jonathan Young], Race[961], Car[Ferrari 488 GT3], Lap[21], BestLap[00:01:58.3140000], Total[4294964077], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:28:25,700 [    7] Service                        GetCarModel: getting car model for carId [7]
+DEBUG 2019-08-04 22:28:25,702 [    7] Service                        GetCarId: returning car model [BMW M6 GT3]
+DEBUG 2019-08-04 22:28:25,704 [    7] Service                        ComputeResults: finalResult[Position[10], Name[Murray Ewonchuk], Race[34], Car[BMW M6 GT3], Lap[20], BestLap[00:01:57.4920000], Total[4294914544], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:28:25,705 [    7] Service                        GetCarModel: getting car model for carId [3]
+DEBUG 2019-08-04 22:28:25,707 [    7] Service                        GetCarId: returning car model [Audi R8 LMS]
+DEBUG 2019-08-04 22:28:25,709 [    7] Service                        ComputeResults: finalResult[Position[11], Name[Gerardo Del Valle], Race[25], Car[Audi R8 LMS], Lap[20], BestLap[00:01:57.4680000], Total[4294915917], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:28:25,712 [    7] Service                        GetCarModel: getting car model for carId [0]
+DEBUG 2019-08-04 22:28:25,714 [    7] Service                        GetCarId: returning car model [Porsche 991 GT3]
+DEBUG 2019-08-04 22:28:25,717 [    7] Service                        ComputeResults: finalResult[Position[12], Name[James Butler], Race[540], Car[Porsche 991 GT3], Lap[20], BestLap[00:01:59.2320000], Total[4294929460], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:28:25,720 [    7] Service                        GetCarModel: getting car model for carId [2]
+DEBUG 2019-08-04 22:28:25,722 [    7] Service                        GetCarId: returning car model [Ferrari 488 GT3]
+DEBUG 2019-08-04 22:28:25,724 [    7] Service                        ComputeResults: finalResult[Position[13], Name[Michael Jeffries], Race[51], Car[Ferrari 488 GT3], Lap[20], BestLap[00:02:00.9570000], Total[4294903455], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:28:25,726 [    7] Service                        GetCarModel: getting car model for carId [0]
+DEBUG 2019-08-04 22:28:25,727 [    7] Service                        GetCarId: returning car model [Porsche 991 GT3]
+DEBUG 2019-08-04 22:28:25,729 [    7] Service                        ComputeResults: finalResult[Position[14], Name[Car Heroes], Race[912], Car[Porsche 991 GT3], Lap[20], BestLap[00:01:58.1280000], Total[4294939169], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:28:25,730 [    7] Service                        GetCarModel: getting car model for carId [17]
+DEBUG 2019-08-04 22:28:25,731 [    7] Service                        GetCarId: returning car model [Honda NSX GT3]
+DEBUG 2019-08-04 22:28:25,733 [    7] Service                        ComputeResults: finalResult[Position[15], Name[John Barker], Race[30], Car[Honda NSX GT3], Lap[19], BestLap[00:01:58.5720000], Total[4294916999], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:28:25,736 [    7] Service                        GetCarModel: getting car model for carId [8]
+DEBUG 2019-08-04 22:28:25,738 [    7] Service                        GetCarId: returning car model [Bently Continental GT3 2018]
+DEBUG 2019-08-04 22:28:25,740 [    7] Service                        ComputeResults: finalResult[Position[16], Name[Michael Magas], Race[8], Car[Bently Continental GT3 2018], Lap[19], BestLap[00:01:59.2440000], Total[4294931770], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:28:25,741 [    7] Service                        GetCarModel: getting car model for carId [15]
+DEBUG 2019-08-04 22:28:25,743 [    7] Service                        GetCarId: returning car model [Lexus RC F GT3]
+DEBUG 2019-08-04 22:28:25,744 [    7] Service                        ComputeResults: finalResult[Position[17], Name[John Pecchia], Race[114], Car[Lexus RC F GT3], Lap[18], BestLap[00:02:00.8130000], Total[4294923607], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:28:25,755 [    7] Service                        OutputResults: returning [18] final results
+INFO  2019-08-04 22:28:25,760 [    7] ControllerActionInvoker        Executed action method DriverParser.Web.Controllers.HomeController.Index (DriverParser.Web), returned result Microsoft.AspNetCore.Mvc.FileContentResult in 4703.3651ms.
+INFO  2019-08-04 22:28:25,774 [    7] FileContentResultExecutor      Executing Microsoft.AspNetCore.Mvc.FileContentResult, sending file with download name 'race_results.csv' ...
+INFO  2019-08-04 22:28:25,785 [    7] ControllerActionInvoker        Executed action DriverParser.Web.Controllers.HomeController.Index (DriverParser.Web) in 4848.3072ms
+INFO  2019-08-04 22:28:25,790 [    7] WebHost                        Request finished in 4919.2717ms 200 text/csv
+INFO  2019-08-04 22:30:12,738 [    1] XmlKeyManager                  User profile is available. Using 'C:\Users\iostr\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+INFO  2019-08-04 22:30:13,524 [    7] WebHost                        Request starting HTTP/2.0 GET https://localhost:44348/  
+INFO  2019-08-04 22:30:13,738 [    7] ControllerActionInvoker        Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller DriverParser.Web.Controllers.HomeController (DriverParser.Web).
+DEBUG 2019-08-04 22:30:13,776 [    7] Service                        Service with strings created
+DEBUG 2019-08-04 22:30:13,777 [    7] Service                        Service with options created
+DEBUG 2019-08-04 22:30:13,783 [    7] HomeController                 HomeController created
+INFO  2019-08-04 22:30:13,795 [    7] ControllerActionInvoker        Executing action method DriverParser.Web.Controllers.HomeController.Index (DriverParser.Web) - Validation state: Valid
+DEBUG 2019-08-04 22:30:13,798 [    7] HomeController                 Index
+INFO  2019-08-04 22:30:13,802 [    7] ControllerActionInvoker        Executed action method DriverParser.Web.Controllers.HomeController.Index (DriverParser.Web), returned result Microsoft.AspNetCore.Mvc.ViewResult in 3.3809ms.
+INFO  2019-08-04 22:30:13,846 [    7] ViewResultExecutor             Executing ViewResult, running view Index.
+INFO  2019-08-04 22:30:14,015 [    7] ViewResultExecutor             Executed ViewResult - view Index executed in 202.0199ms.
+INFO  2019-08-04 22:30:14,019 [    7] ControllerActionInvoker        Executed action DriverParser.Web.Controllers.HomeController.Index (DriverParser.Web) in 266.4004ms
+INFO  2019-08-04 22:30:14,026 [    7] WebHost                        Request finished in 502.8893ms 200 text/html; charset=utf-8
+INFO  2019-08-04 22:30:19,350 [    6] WebHost                        Request starting HTTP/2.0 POST https://localhost:44348/ multipart/form-data; boundary=----WebKitFormBoundary494MO5hP8VFNWsVA 44949
+WARN  2019-08-04 22:30:19,355 [    6] CorsService                    The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+INFO  2019-08-04 22:30:19,358 [    6] CorsService                    CORS policy execution successful.
+INFO  2019-08-04 22:30:19,389 [    6] ControllerActionInvoker        Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.Collections.Generic.List`1[Microsoft.AspNetCore.Http.IFormFile]) on controller DriverParser.Web.Controllers.HomeController (DriverParser.Web).
+DEBUG 2019-08-04 22:30:19,472 [   11] Service                        Service with strings created
+DEBUG 2019-08-04 22:30:19,474 [   11] Service                        Service with options created
+DEBUG 2019-08-04 22:30:19,476 [   11] HomeController                 HomeController created
+INFO  2019-08-04 22:30:19,517 [   11] ControllerActionInvoker        Executing action method DriverParser.Web.Controllers.HomeController.Index (DriverParser.Web) - Validation state: Valid
+DEBUG 2019-08-04 22:30:19,522 [   11] HomeController                 UploadFile: file count[1]
+DEBUG 2019-08-04 22:30:19,536 [    6] Service                        ParseFile: Parsing file [C:\Users\iostr\AppData\Local\Temp\tmp2FAB.tmp]
+DEBUG 2019-08-04 22:30:19,538 [    6] Service                        ParseFile: Opening file [C:\Users\iostr\AppData\Local\Temp\tmp2FAB.tmp], assuming ASCII encoding
+DEBUG 2019-08-04 22:30:19,540 [    6] Service                        ParseFile: Stream created, reading lines
+DEBUG 2019-08-04 22:30:19,542 [    6] Service                        ParseFile: got all lines, deserializing file, [22988] lines
+DEBUG 2019-08-04 22:30:19,725 [    6] Service                        ParseFile: successfully deserialized file, attempting to convert to an entity so it can be saved
+DEBUG 2019-08-04 22:30:19,727 [    6] Service                        Computing results
+DEBUG 2019-08-04 22:30:19,729 [    6] Service                        GetCarModel: getting car model for carId [8]
+DEBUG 2019-08-04 22:30:19,731 [    6] Service                        GetCarId: returning car model [Bently Continental GT3 2018]
+DEBUG 2019-08-04 22:30:19,734 [    6] Service                        ComputeResults: finalResult[Position[0], Name[Mike Stofmeel], Race[7], Car[Bently Continental GT3 2018], Lap[21], BestLap[00:01:55.3650000], Total[4294881613], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:30:19,735 [    6] Service                        GetCarModel: getting car model for carId [15]
+DEBUG 2019-08-04 22:30:19,736 [    6] Service                        GetCarId: returning car model [Lexus RC F GT3]
+DEBUG 2019-08-04 22:30:19,737 [    6] Service                        ComputeResults: finalResult[Position[1], Name[Travis Wallace], Race[14], Car[Lexus RC F GT3], Lap[21], BestLap[00:01:55.7100000], Total[4294888638], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:30:19,738 [    6] Service                        GetCarModel: getting car model for carId [1]
+DEBUG 2019-08-04 22:30:19,739 [    6] Service                        GetCarId: returning car model [Mercedes AMG GT3]
+DEBUG 2019-08-04 22:30:19,740 [    6] Service                        ComputeResults: finalResult[Position[2], Name[Brandyn Purcell], Race[33], Car[Mercedes AMG GT3], Lap[21], BestLap[00:01:56.8890000], Total[4294926146], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:30:19,741 [    6] Service                        GetCarModel: getting car model for carId [0]
+DEBUG 2019-08-04 22:30:19,742 [    6] Service                        GetCarId: returning car model [Porsche 991 GT3]
+DEBUG 2019-08-04 22:30:19,744 [    6] Service                        ComputeResults: finalResult[Position[3], Name[Luis Hinojos], Race[911], Car[Porsche 991 GT3], Lap[21], BestLap[00:01:56.5470000], Total[4294927115], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:30:19,746 [    6] Service                        GetCarModel: getting car model for carId [7]
+DEBUG 2019-08-04 22:30:19,747 [    6] Service                        GetCarId: returning car model [BMW M6 GT3]
+DEBUG 2019-08-04 22:30:19,750 [    6] Service                        ComputeResults: finalResult[Position[4], Name[Elyess Bouzouita], Race[36], Car[BMW M6 GT3], Lap[21], BestLap[00:01:56.7960000], Total[4294927958], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:30:19,752 [    6] Service                        GetCarModel: getting car model for carId [2]
+DEBUG 2019-08-04 22:30:19,753 [    6] Service                        GetCarId: returning car model [Ferrari 488 GT3]
+DEBUG 2019-08-04 22:30:19,755 [    6] Service                        ComputeResults: finalResult[Position[5], Name[Leandro Cairol], Race[11], Car[Ferrari 488 GT3], Lap[21], BestLap[00:01:55.4610000], Total[4294928643], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:30:19,756 [    6] Service                        GetCarModel: getting car model for carId [3]
+DEBUG 2019-08-04 22:30:19,757 [    6] Service                        GetCarId: returning car model [Audi R8 LMS]
+DEBUG 2019-08-04 22:30:19,759 [    6] Service                        ComputeResults: finalResult[Position[6], Name[Tom Lebeuf], Race[21], Car[Audi R8 LMS], Lap[21], BestLap[00:01:57.0270000], Total[4294938059], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:30:19,760 [    6] Service                        GetCarModel: getting car model for carId [1]
+DEBUG 2019-08-04 22:30:19,761 [    6] Service                        GetCarId: returning car model [Mercedes AMG GT3]
+DEBUG 2019-08-04 22:30:19,762 [    6] Service                        ComputeResults: finalResult[Position[7], Name[Wesley Stokes], Race[472], Car[Mercedes AMG GT3], Lap[21], BestLap[00:01:57.3660000], Total[4294940918], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:30:19,763 [    6] Service                        GetCarModel: getting car model for carId [4]
+DEBUG 2019-08-04 22:30:19,764 [    6] Service                        GetCarId: returning car model [Lamborghini Huracan GT3]
+DEBUG 2019-08-04 22:30:19,766 [    6] Service                        ComputeResults: finalResult[Position[8], Name[Johnny Major], Race[77], Car[Lamborghini Huracan GT3], Lap[21], BestLap[00:01:57.2820000], Total[4294950801], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:30:19,767 [    6] Service                        GetCarModel: getting car model for carId [2]
+DEBUG 2019-08-04 22:30:19,769 [    6] Service                        GetCarId: returning car model [Ferrari 488 GT3]
+DEBUG 2019-08-04 22:30:19,770 [    6] Service                        ComputeResults: finalResult[Position[9], Name[Jonathan Young], Race[961], Car[Ferrari 488 GT3], Lap[21], BestLap[00:01:58.3140000], Total[4294964077], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:30:19,771 [    6] Service                        GetCarModel: getting car model for carId [7]
+DEBUG 2019-08-04 22:30:19,772 [    6] Service                        GetCarId: returning car model [BMW M6 GT3]
+DEBUG 2019-08-04 22:30:19,773 [    6] Service                        ComputeResults: finalResult[Position[10], Name[Murray Ewonchuk], Race[34], Car[BMW M6 GT3], Lap[20], BestLap[00:01:57.4920000], Total[4294914544], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:30:19,774 [    6] Service                        GetCarModel: getting car model for carId [3]
+DEBUG 2019-08-04 22:30:19,775 [    6] Service                        GetCarId: returning car model [Audi R8 LMS]
+DEBUG 2019-08-04 22:30:19,776 [    6] Service                        ComputeResults: finalResult[Position[11], Name[Gerardo Del Valle], Race[25], Car[Audi R8 LMS], Lap[20], BestLap[00:01:57.4680000], Total[4294915917], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:30:19,777 [    6] Service                        GetCarModel: getting car model for carId [0]
+DEBUG 2019-08-04 22:30:19,779 [    6] Service                        GetCarId: returning car model [Porsche 991 GT3]
+DEBUG 2019-08-04 22:30:19,780 [    6] Service                        ComputeResults: finalResult[Position[12], Name[James Butler], Race[540], Car[Porsche 991 GT3], Lap[20], BestLap[00:01:59.2320000], Total[4294929460], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:30:19,782 [    6] Service                        GetCarModel: getting car model for carId [2]
+DEBUG 2019-08-04 22:30:19,783 [    6] Service                        GetCarId: returning car model [Ferrari 488 GT3]
+DEBUG 2019-08-04 22:30:19,785 [    6] Service                        ComputeResults: finalResult[Position[13], Name[Michael Jeffries], Race[51], Car[Ferrari 488 GT3], Lap[20], BestLap[00:02:00.9570000], Total[4294903455], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:30:19,788 [    6] Service                        GetCarModel: getting car model for carId [0]
+DEBUG 2019-08-04 22:30:19,790 [    6] Service                        GetCarId: returning car model [Porsche 991 GT3]
+DEBUG 2019-08-04 22:30:19,792 [    6] Service                        ComputeResults: finalResult[Position[14], Name[Car Heroes], Race[912], Car[Porsche 991 GT3], Lap[20], BestLap[00:01:58.1280000], Total[4294939169], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:30:19,794 [    6] Service                        GetCarModel: getting car model for carId [17]
+DEBUG 2019-08-04 22:30:19,797 [    6] Service                        GetCarId: returning car model [Honda NSX GT3]
+DEBUG 2019-08-04 22:30:19,799 [    6] Service                        ComputeResults: finalResult[Position[15], Name[John Barker], Race[30], Car[Honda NSX GT3], Lap[19], BestLap[00:01:58.5720000], Total[4294916999], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:30:19,800 [    6] Service                        GetCarModel: getting car model for carId [8]
+DEBUG 2019-08-04 22:30:19,802 [    6] Service                        GetCarId: returning car model [Bently Continental GT3 2018]
+DEBUG 2019-08-04 22:30:19,803 [    6] Service                        ComputeResults: finalResult[Position[16], Name[Michael Magas], Race[8], Car[Bently Continental GT3 2018], Lap[19], BestLap[00:01:59.2440000], Total[4294931770], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:30:19,804 [    6] Service                        GetCarModel: getting car model for carId [15]
+DEBUG 2019-08-04 22:30:19,806 [    6] Service                        GetCarId: returning car model [Lexus RC F GT3]
+DEBUG 2019-08-04 22:30:19,807 [    6] Service                        ComputeResults: finalResult[Position[17], Name[John Pecchia], Race[114], Car[Lexus RC F GT3], Lap[18], BestLap[00:02:00.8130000], Total[4294923607], DriverParser.Model.FinalResult]
+DEBUG 2019-08-04 22:30:19,809 [    6] Service                        OutputResults: returning [18] final results
+INFO  2019-08-04 22:30:19,813 [    6] ControllerActionInvoker        Executed action method DriverParser.Web.Controllers.HomeController.Index (DriverParser.Web), returned result Microsoft.AspNetCore.Mvc.FileContentResult in 294.2304ms.
+INFO  2019-08-04 22:30:19,822 [    6] FileContentResultExecutor      Executing Microsoft.AspNetCore.Mvc.FileContentResult, sending file with download name '2019-08-04 22:30:19Z_race_results.csv' ...
+INFO  2019-08-04 22:30:19,833 [    6] ControllerActionInvoker        Executed action DriverParser.Web.Controllers.HomeController.Index (DriverParser.Web) in 434.6364ms
+INFO  2019-08-04 22:30:19,839 [    6] WebHost                        Request finished in 490.5399ms 200 text/csv

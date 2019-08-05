@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -63,7 +64,9 @@ namespace DriverParser.Web.Controllers
                 }
             }
 
-            return Ok(sb.ToString());
+            //return Ok(sb.ToString());
+            var fileName = $"{DateTime.Now:u}_race_results.csv";
+            return File(new UTF8Encoding().GetBytes(sb.ToString()), "text/csv",fileName);
         }
     }
 }
