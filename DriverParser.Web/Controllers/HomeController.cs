@@ -41,32 +41,49 @@ namespace DriverParser.Web.Controllers
         public async Task<IActionResult> Index(List<IFormFile> files)
         {
             _logger.LogDebug($"UploadFile: file count[{files.Count}]");
-            
-            var sb = new StringBuilder();
-            foreach (var formFile in files)
-            {
-                if (formFile.Length > 0)
-                {
-                    // full path to file in temp location
-                    var filePath = Path.GetTempFileName();
-                    
-                    using (var fStream = new FileStream(filePath, FileMode.Create))
-                    {
-                        await formFile.CopyToAsync(fStream);
-                    }
 
-                    _service.ParseFile(filePath);
-                    _service.ComputeResults();
-                    var results = _service.OutputResults();
-                    sb.AppendLine(results);
-                    sb.AppendLine(string.Empty);
-                    sb.AppendLine(string.Empty);
+            string filePath = string.Empty;
+            try
+            {
+                var sb = new StringBuilder();
+                foreach (var formFile in files)
+                {
+                    if (formFile.Length > 0)
+                    {
+                        // full path to file in temp location
+                        filePath = Path.GetTempFileName();
+
+                        using (var fStream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await formFile.CopyToAsync(fStream);
+                        }
+
+                        _service.ParseFile(filePath);
+                        _service.ComputeResults();
+                        var results = _service.OutputResults();
+                        sb.AppendLine(results);
+                    }
+                }
+
+                //return Ok(sb.ToString());
+                var fileName = $"{DateTime.Now:u}_race_results.csv";
+                return File(new UTF8Encoding().GetBytes(sb.ToString()), "text/csv", fileName);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Error reading and computing file [{ex.GetExceptionMessage()}]", ex);
+                return BadRequest(ex.Message);
+            }
+            finally
+            {
+                if (string.IsNullOrWhiteSpace(filePath))
+                {
+                    if (System.IO.File.Exists(filePath))
+                    {
+                        System.IO.File.Delete(filePath);
+                    }
                 }
             }
-
-            //return Ok(sb.ToString());
-            var fileName = $"{DateTime.Now:u}_race_results.csv";
-            return File(new UTF8Encoding().GetBytes(sb.ToString()), "text/csv",fileName);
         }
     }
 }
