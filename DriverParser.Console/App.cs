@@ -7,15 +7,15 @@ namespace DriverParser.Console
 {
     public class App
     {
-        private readonly ILoggerFactory _loggerFactory;
         private readonly ILogger<App> _logger;
         private readonly IService _service;
 
-        public App(ILoggerFactory loggerFactory, IService service)
+        public App(ILogger<App> logger, IService service)
         {
-            _loggerFactory = loggerFactory.ThrowIfNull(nameof(loggerFactory));
-            _logger = loggerFactory.ThrowIfNull(nameof(loggerFactory)).CreateLogger<App>();
+            _logger = logger.ThrowIfNull(nameof(logger));
             _service = service.ThrowIfNull(nameof(service));
+
+            _logger.LogDebug("App created");
         }
 
         public void Run()

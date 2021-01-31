@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Runtime.Serialization.Json;
-using System.Security.Cryptography;
 using System.Text;
+
 using DriverParser.Extensions;
 using DriverParser.Model;
+
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+
 using Newtonsoft.Json;
 
 namespace DriverParser.Service
@@ -69,8 +69,21 @@ namespace DriverParser.Service
         /// </summary>
         public string StatusMessage { get; set; }
 
+        public Service(ILoggerFactory loggerFactory)
+        {
+            _logger = loggerFactory
+                .ThrowIfNull(nameof(loggerFactory))
+                .CreateLogger<Service>()
+                .ThrowIfNull(nameof(_logger));
+            _result = null;
+            _finalResults = new List<FinalResult>();
+            StatusMessage = string.Empty;
+
+            _logger.LogDebug("Service created");
+        }
+
         /// <summary>
-        /// Constructor - Initializes te <see cref="IService"/> object
+        /// Constructor - Initializes the <see cref="IService"/> object
         /// </summary>
         /// <param name="loggerFactory"><see cref="ILoggerFactory"/> logger factory - creates a <see cref="ILogger"/> object</param>
         /// <param name="inputPath"><see cref="string"/> of the input file path</param>

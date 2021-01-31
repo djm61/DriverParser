@@ -1449,3 +1449,16 @@ INFO  2019-08-04 22:30:19,813 [    6] ControllerActionInvoker        Executed ac
 INFO  2019-08-04 22:30:19,822 [    6] FileContentResultExecutor      Executing Microsoft.AspNetCore.Mvc.FileContentResult, sending file with download name '2019-08-04 22:30:19Z_race_results.csv' ...
 INFO  2019-08-04 22:30:19,833 [    6] ControllerActionInvoker        Executed action DriverParser.Web.Controllers.HomeController.Index (DriverParser.Web) in 434.6364ms
 INFO  2019-08-04 22:30:19,839 [    6] WebHost                        Request finished in 490.5399ms 200 text/csv
+INFO  2019-08-04 23:08:52,589 [    1] XmlKeyManager                  User profile is available. Using 'C:\Users\iostr\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+INFO  2019-08-04 23:08:53,247 [    6] WebHost                        Request starting HTTP/2.0 GET https://localhost:44348/  
+INFO  2019-08-04 23:08:53,533 [    6] ControllerActionInvoker        Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller DriverParser.Web.Controllers.HomeController (DriverParser.Web).
+DEBUG 2019-08-04 23:08:53,593 [    6] Service                        Service with strings created
+DEBUG 2019-08-04 23:08:53,595 [    6] Service                        Service with options created
+DEBUG 2019-08-04 23:08:53,599 [    6] HomeController                 HomeController created
+INFO  2019-08-04 23:08:53,608 [    6] ControllerActionInvoker        Executing action method DriverParser.Web.Controllers.HomeController.Index (DriverParser.Web) - Validation state: Valid
+DEBUG 2019-08-04 23:08:53,610 [    6] HomeController                 Index
+INFO  2019-08-04 23:08:53,614 [    6] ControllerActionInvoker        Executed action method DriverParser.Web.Controllers.HomeController.Index (DriverParser.Web), returned result Microsoft.AspNetCore.Mvc.ViewResult in 2.4569ms.
+INFO  2019-08-04 23:08:53,667 [    6] ViewResultExecutor             Executing ViewResult, running view Index.
+INFO  2019-08-04 23:08:53,815 [    6] ViewResultExecutor             Executed ViewResult - view Index executed in 190.4462ms.
+INFO  2019-08-04 23:08:53,818 [    6] ControllerActionInvoker        Executed action DriverParser.Web.Controllers.HomeController.Index (DriverParser.Web) in 274.6832ms
+INFO  2019-08-04 23:08:53,824 [    6] WebHost                        Request finished in 578.1278ms 200 text/html; charset=utf-8
