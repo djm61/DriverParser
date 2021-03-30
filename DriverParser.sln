@@ -15,6 +15,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DriverParser.Downloader", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DriverParser.Desktop", "DriverParser.Desktop\DriverParser.Desktop.csproj", "{25A73DEA-6BA5-467C-A5EA-E3F4DC6D95FA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{4176EB10-5BF7-400B-9C37-B1E6E5DA2742}"
+	ProjectSection(SolutionItems) = preProject
+		Files\190714_173003_result1.json = Files\190714_173003_result1.json
+		Files\190728_184347_result2.json = Files\190728_184347_result2.json
+		Files\2019-08-04 22_30_19Z_race_results.csv = Files\2019-08-04 22_30_19Z_race_results.csv
+		Files\2021-01-29 22_57_24Z_race_results.csv = Files\2021-01-29 22_57_24Z_race_results.csv
+		Files\2021-01-29 23_03_47Z_race_results.csv = Files\2021-01-29 23_03_47Z_race_results.csv
+		Files\2021-01-30 08_35_27Z_race_results.csv = Files\2021-01-30 08_35_27Z_race_results.csv
+		Files\results.json = Files\results.json
+		Files\results2.json = Files\results2.json
+		Files\results_7_28_2019.7z = Files\results_7_28_2019.7z
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
